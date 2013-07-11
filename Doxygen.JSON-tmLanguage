@@ -1,0 +1,56 @@
+{ "name": "Doxygen",
+  "scopeName": "source.doxygen",
+  "fileTypes": ["cpp", "c", "h", "hpp"],
+  "patterns": [
+	  { 
+	  	"name": "comment.doxygen",
+	    "begin": "/\\*",
+	    "end": "\\*/",
+	    "patterns" : [ 
+			{
+				"name": "text.doxygen",
+				"begin" : "(\\\\|@)(param) ",
+				"beginCaptures" : {
+					"1" : {
+						"name" : "punctuation.definition.begin.doxygen"
+					},
+					"2" : {
+						"name" : "keyword.doxygen"
+					}
+				},
+				"end" : "\\s+",
+				"patterns" : [ 
+						{ 
+							"include": "$self" 
+						},
+						{ 
+							"name" : "variable.parameter.doxygen",
+							"match" : "\\b[a-zA-Z_][\\w_]*\\b"
+						}
+				 ]
+			},
+			{
+				"name": "text.doxygen",
+				"comment" : "General Keyword highlighting for Doxygen",
+				"end": "\\s+",
+				"begin": "(\\\\|@)",
+				"beginCaptures": {
+				    "1": { 
+				    	"name": "punctuation.definition.begin.doxygen" 
+				    }
+				},
+				"patterns": [
+					{ 
+						"include": "$self" 
+					},
+					{
+						"name": "keyword.doxygen",
+						"match": "\\b(a|addindex|addtogroup|anchor|arg|attention|author|authors|b|brief|bug|c|callgraph|callergraph|category|cite|class|code|cond|copybrief|copydetails|copydoc|copyright|date|def|defgroup|deprecated|details|dir|docbookonly|dontinclude|dot|dotfile|e|else|elseif|em|endcode|endcond|enddocbookonly|enddot|endhtmlonly|endif|endinternal|endlatexonly|endlink|endmanonly|endmsc|endrtfonly|endsecreflist|endverbatim|endxmlonly|enum|example|exception|extends|f\\$|f\\[|f\\]|f\\{|f\\}|file|fn|headerfile|hideinitializer|htmlinclude|htmlonly|idlexcept|if|ifnot|image|implements|include|includelineno|ingroup|internal|invariant|interface|latexonly|li|line|link|mainpage|manonly|memberof|msc|mscfile|n|name|namespace|nosubgrouping|note|overload|p|package|page|par|paragraph|post|pre|private|privatesection|property|protected|protectedsection|protocol|public|publicsection|pure|ref|refitem|related|relates|relatedalso|relatesalso|remark|remarks|result|return|returns|retval|rtfonly|sa|secreflist|section|see|short|showinitializer|since|skip|skipline|snippet|struct|subpage|subsection|subsubsection|tableofcontents|test|throw|throws|todo|tparam|typedef|union|until|var|verbatim|verbinclude|version|vhdlflow|warning|weakgroup|xmlonly|xrefitem)\\b" 
+					}
+				]
+			}
+		]
+	}
+  ],
+  "uuid": "d1262f7b-f760-4b58-b1b7-d503b91de87a"
+}
