@@ -4,12 +4,39 @@
   "patterns": [
 	  { 
 	  	"name": "comment.doxygen",
-	    "begin": "/\\*",
+	    "begin": "/\\*(\\*|!)",
 	    "end": "\\*/",
 	    "patterns" : [ 
+	    	{
+				"name": "text.doxygen",
+				"begin" : "(\\\\|@)(addtogroup|defgroup|page|weakgroup|subpage|section|subsection|subsubsection|paragraph) ([\\w_-]+)",
+				"comment" : "Two Parameter keywords",
+				"beginCaptures" : {
+					"1" : {
+						"name" : "punctuation.definition.begin.doxygen"
+					},
+					"2" : {
+						"name" : "keyword.doxygen"
+					},
+					"3" : {
+						"name" : "variable.definition.doxygen"
+					}
+				},
+				"end" : "\\n",
+				"patterns" : [ 
+						{ 
+							"include": "$self" 
+						},
+						{ 
+							"name" : "name.comment.doxygen",
+							"match" : "."
+						}
+				 ]
+			},
 			{
 				"name": "text.doxygen",
-				"begin" : "(\\\\|@)(param) ",
+				"begin" : "(\\\\|@)(param|def|enum|example|extends|file|idlexcept|implements|mainpage|memberof|name|namespace|overload|package|relates|related|relatedalso|tparam|retval|anchor|cite|link|ref|refitem|subpage|dontinclude|include|includelineno|verbinclude|htmlinclude|a|b|c|copydoc|copybrief|copydetails|dotfile|mscfile|e|em|p) ",
+				"comment" : "Single Parameter keywords",
 				"beginCaptures" : {
 					"1" : {
 						"name" : "punctuation.definition.begin.doxygen"

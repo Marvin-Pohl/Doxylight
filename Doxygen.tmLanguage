@@ -15,7 +15,7 @@
 	<array>
 		<dict>
 			<key>begin</key>
-			<string>/\*</string>
+			<string>/\*(\*|!)</string>
 			<key>end</key>
 			<string>\*/</string>
 			<key>name</key>
@@ -24,7 +24,48 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(\\|@)(param) </string>
+					<string>(\\|@)(addtogroup|defgroup|page|weakgroup|subpage|section|subsection|subsubsection|paragraph) ([\w_-]+)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.begin.doxygen</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.doxygen</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>variable.definition.doxygen</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>Two Parameter keywords</string>
+					<key>end</key>
+					<string>\n</string>
+					<key>name</key>
+					<string>text.doxygen</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>.</string>
+							<key>name</key>
+							<string>name.comment.doxygen</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(\\|@)(param|def|enum|example|extends|file|idlexcept|implements|mainpage|memberof|name|namespace|overload|package|relates|related|relatedalso|tparam|retval|anchor|cite|link|ref|refitem|subpage|dontinclude|include|includelineno|verbinclude|htmlinclude|a|b|c|copydoc|copybrief|copydetails|dotfile|mscfile|e|em|p) </string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -38,6 +79,8 @@
 							<string>keyword.doxygen</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>Single Parameter keywords</string>
 					<key>end</key>
 					<string>\s+</string>
 					<key>name</key>
