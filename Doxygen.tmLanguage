@@ -46,7 +46,7 @@
 					<key>comment</key>
 					<string>Two Parameter keywords</string>
 					<key>end</key>
-					<string>\n</string>
+					<string>$</string>
 					<key>name</key>
 					<string>text.doxygen</string>
 					<key>patterns</key>
@@ -65,7 +65,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(\\|@)(param|def|enum|example|extends|file|idlexcept|implements|mainpage|memberof|name|namespace|overload|package|relates|related|relatedalso|tparam|retval|anchor|cite|link|ref|refitem|subpage|dontinclude|include|includelineno|verbinclude|htmlinclude|a|b|c|copydoc|copybrief|copydetails|dotfile|mscfile|e|em|p) </string>
+					<string>(\\|@)(param|def|enum|example|extends|file|idlexcept|implements|memberof|name|namespace|overload|package|relates|related|relatedalso|tparam|retval|anchor|cite|link|ref|refitem|subpage|dontinclude|include|includelineno|verbinclude|htmlinclude|a|b|c|copydoc|copybrief|copydetails|dotfile|mscfile|e|em|p) </string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
